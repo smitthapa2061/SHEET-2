@@ -62,14 +62,19 @@ const WwcdTeamStats = () => {
   if (matchData.length === 0) return <p>No match data available.</p>;
 
   // Find the winning team (team with highest total points)
-  const winningTeam = matchData.reduce((prev, current) =>
-    prev.total_points > current.total_points ? prev : current
-  );
+  // Find the team that won with "chicken === 1" OR the team with highest total points
+  const chickenWinner = matchData.find((team) => team.chicken === 1);
 
-  // Get the 4 players from the winning team
+  const winningTeam = chickenWinner
+    ? chickenWinner
+    : matchData.reduce((prev, current) =>
+        prev.total_points > current.total_points ? prev : current
+      );
+
+  // Get players from the winning team
   const winningPlayers = matchData
     .filter((player) => player.team_name === winningTeam.team_name)
-    .slice(0, 4); // Get first 4 players
+    .slice(0, 4); // Ensure we get the first 4 players
 
   return (
     <div className="font-bebas-neue font-[500]">
