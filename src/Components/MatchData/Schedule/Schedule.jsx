@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-const apiKey = "AIzaSyCgDkaR7IVZDB6INAyjHNRcu3brZfoWpSA"; // Your Google Sheets API key
-const spreadsheetId = "1u1t50nxdhlZimY3vsOlM6452gBauTZZ0g2UdfRsj7T8"; // Your Google Sheets ID
+const apiKey = "AIzaSyBd_goawSN9ikX7mqdW0r4H4WrH3T7eBEw"; // Your Google Sheets API key
+const spreadsheetId = "1LeFzBRavciItt15hqSjrJn81O2eNpKa0a0-LQG3fwwQ"; // Your Google Sheets ID
 const range = "matchSchedule!A2:H6"; // Range you want to fetch (adjust this as needed)
 const range2 = "setup!A2:B10"; // Range for setup sheet
 
