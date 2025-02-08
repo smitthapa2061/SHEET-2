@@ -84,7 +84,7 @@ const MatchData = () => {
           (team, index) => index >= 5 && index <= 13 && team.team_name // Page 1: Show 6th to 14th teams
         )
       : matchData.filter(
-          (team, index) => index >= 14 && index <= 22 && team.team_name // Page 2: Show 14th to 22nd teams
+          (team, index) => index >= 14 && index <= 24 && team.team_name // Page 2: Show 14th to 22nd teams
         );
 
   if (loading) return <p>Loading...</p>;
@@ -323,7 +323,7 @@ const MatchData = () => {
                   style={{ backgroundColor: primaryColor }}
                 >
                   {/* Adjust index based on currentPage */}
-                  {currentPage === 1 ? index + 6 : index + 14}
+                  {currentPage === 1 ? index + 6 : index + 15}
                 </div>
                 <div className="w-[392px] h-[80px] bg-[#000000bc] flex">
                   <div className="w-[90px] h-[90px] relative left-[5px]">

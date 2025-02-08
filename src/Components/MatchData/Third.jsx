@@ -163,7 +163,7 @@ const Third = () => {
                       transition={{ duration: 0.5, delay: 0.4 }}
                       className="flex font-[300] items-start text-6xl text-white font-teko"
                     >
-                      RANK-1
+                      RANK-3
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, x: -40 }}
