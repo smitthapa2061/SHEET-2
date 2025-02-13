@@ -11,6 +11,7 @@ import Schedule from "./Components/MatchData/Schedule/Schedule";
 import PlayingTeams from "./Components/Slotlist/playingTeam";
 import Alerts from "./Components/Alerts/Alerts";
 import Dom from "./Components/Alerts/Dom";
+import Roster from "./Components/MatchData/Roster";
 
 import UpperStats from "./Components/Alerts/UpperStats";
 import Map from "./Components/Slotlist/MapInfo";
@@ -39,7 +40,7 @@ function Comps() {
       <Route path="/Result" element={<Controller />} />
       <Route path="/lower" element={<Lower />} />
       <Route path="/LiveStats" element={<DisplayControl />} />
-
+      <Route path="/Roster" element={<Roster />} />
       <Route path="/slotlist" element={<Slotlist />} />
     </Routes>
   );
