@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { motion } from "framer-motion";
+
 const apiKey = "AIzaSyBd_goawSN9ikX7mqdW0r4H4WrH3T7eBEw"; // Your Google Sheets API key
 const spreadsheetId = "1LeFzBRavciItt15hqSjrJn81O2eNpKa0a0-LQG3fwwQ"; // Your Google Sheets ID
 const range = "overall1!A2:G25"; // Range for overall stats
@@ -102,63 +104,69 @@ const OverallStats = () => {
 
   return (
     <div>
-      <div className="">
-        <div className="relative left-[1547px] top-[20px]">
-          {/* Header */}
-          <div
-            className="bg-[#b31616] w-[370px] h-[36px] flex justify-around text-white text-[22px] items-center font-[poppins]"
-            style={{
-              backgroundColor: primaryColor,
-            }}
-          >
-            <div className="relative left-[30px]">TEAM</div>
-            <div className="relative left-[80px]">KILLS</div>
-            <div className="relative left-[27px]">TOTAL</div>
-          </div>
+      <motion.div
+        initial={{ opacity: 0, x: 1920 }} // Start off-screen (right side)
+        animate={{ opacity: 1, x: 0 }} // Fade in and move to its position
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <div className="">
+          <div className="relative left-[1547px] top-[20px] ">
+            {/* Header */}
+            <div
+              className="bg-[#b31616] w-[370px] h-[36px] flex justify-around text-white text-[22px] items-center font-[poppins]"
+              style={{
+                backgroundColor: primaryColor,
+              }}
+            >
+              <div className="relative left-[30px]">TEAM</div>
+              <div className="relative left-[80px]">KILLS</div>
+              <div className="relative left-[27px]">TOTAL</div>
+            </div>
 
-          <div>
-            {sortedData.map((row, index) => (
-              <div
-                key={index}
-                className="bg-[#01010199] w-[370px] h-[50px] flex font-bebas-neue font-[300] border-solid border-[#c1c1c1] border-b-[1px]"
-              >
-                <div className="text-white text-[43px] flex text-center justify-center items-center w-[60px] mt-[-5px]">
-                  {index + 1}
-                </div>
-
+            <div>
+              {sortedData.map((row, index) => (
                 <div
-                  className="bg-[#ffffff] w-[170px] h-[50px] absolute left-[60px] flex justify-left text-black border-solid border-[#b51f1f] border-b-[1px]"
-                  style={{
-                    borderColor: primaryColor,
-                  }}
+                  key={index}
+                  className="bg-[#01010199] w-[370px] h-[50px] flex font-bebas-neue font-[300] border-solid border-[#c1c1c1] border-b-[1px]"
                 >
-                  <div className="w-[50px] h-[50px] absolute z-10">
-                    <img
-                      src={
-                        row.ColumnB ||
-                        "https://res.cloudinary.com/dqckienxj/image/upload/v1727161652/default_nuloh2.png"
-                      }
-                      alt=""
-                    />
+                  <div className="text-white text-[43px] flex text-center justify-center items-center w-[60px] mt-[-5px]">
+                    {index + 1}
                   </div>
-                  <div className="bg-black w-[2px] h-[46px] absolute left-[50px] top-[3px]"></div>
-                  <div className="text-[45px] mt-[-6px] absolute left-[54px]">
-                    {row.ColumnA}
+
+                  <div
+                    className="bg-[#ffffff] w-[170px] h-[50px] absolute left-[60px] flex justify-left text-black border-solid border-[#b51f1f] border-b-[1px]"
+                    style={{
+                      borderColor: primaryColor,
+                    }}
+                  >
+                    <div className="w-[50px] h-[50px] absolute z-10">
+                      <img
+                        src={
+                          row.ColumnB ||
+                          "https://res.cloudinary.com/dqckienxj/image/upload/v1727161652/default_nuloh2.png"
+                        }
+                        alt=""
+                      />
+                    </div>
+                    <div className="bg-black w-[2px] h-[46px] absolute left-[50px] top-[3px]"></div>
+                    <div className="text-[45px] mt-[-6px] absolute left-[54px]">
+                      {row.ColumnA}
+                    </div>
+                  </div>
+
+                  <div className="absolute left-[245px] text-white text-[45px] mt-[1px] flex items-center justify-center w-[50px] h-[50px]">
+                    {row.ColumnD}
+                  </div>
+
+                  <div className="absolute left-[310px] text-white text-[45px] mt-[1px] flex items-center justify-center w-[50px] h-[50px]">
+                    {row.ColumnC}
                   </div>
                 </div>
-
-                <div className="absolute left-[245px] text-white text-[45px] mt-[1px] flex items-center justify-center w-[50px] h-[50px]">
-                  {row.ColumnD}
-                </div>
-
-                <div className="absolute left-[310px] text-white text-[45px] mt-[1px] flex items-center justify-center w-[50px] h-[50px]">
-                  {row.ColumnC}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

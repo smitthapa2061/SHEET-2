@@ -100,15 +100,21 @@ const Mvp = () => {
                 <div className="text-white text-[200px] left-[820px] absolute top-[170px]">
                   MOST VALUEABLE
                 </div>
-                <div className=" absolute top-[134px] scale-110 left-[90px]">
-                  <img
-                    src={
-                      highestKillsPlayer?.player_photo ||
-                      "https://res.cloudinary.com/dqckienxj/image/upload/v1737809848/Layer_6_cnd9gl_ugaxek.png"
-                    }
-                    alt=""
-                  />
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 680 }} // Start completely below the screen
+                  animate={{ opacity: 1, y: 0 }} // Slide up to its position
+                  transition={{ duration: 1, ease: "easeOut" }}
+                >
+                  <div className=" absolute top-[134px] scale-110 left-[90px]">
+                    <img
+                      src={
+                        highestKillsPlayer?.player_photo ||
+                        "https://res.cloudinary.com/dqckienxj/image/upload/v1737809848/Layer_6_cnd9gl_ugaxek.png"
+                      }
+                      alt=""
+                    />
+                  </div>
+                </motion.div>
                 <div className="text-white font-teko font-[300]">
                   <div className="bg-[#ebebeb] w-[200px] h-[200px] relative left-[1000px] top-[450px]">
                     <img src={highestKillsPlayer?.team_logo} alt="" />

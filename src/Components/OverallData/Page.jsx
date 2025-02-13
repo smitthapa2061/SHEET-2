@@ -160,9 +160,16 @@ const Overall = () => {
               {/* First Column */}
               <ul>
                 {firstColumnData.map((row, index) => (
-                  <li
-                    key={index}
+                  <motion.div
                     className="p-4 mb-2 w-[800px] h-[65px] relative left-[120px] flex"
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "easeOut",
+                      delay: index * 0.2,
+                    }} // Staggered animation
                   >
                     {/* First Red Box */}
                     <div
@@ -225,16 +232,23 @@ const Overall = () => {
 
                     {/* Divider */}
                     <div className="bg-white w-[3px] h-[63px]"></div>
-                  </li>
+                  </motion.div>
                 ))}
               </ul>
 
               {/* Second Column */}
               <ul>
                 {secondColumnData.map((row, index) => (
-                  <li
-                    key={index}
+                  <motion.div
                     className="p-4 mb-2 w-[800px] h-[65px] relative right-[10px] flex"
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "easeOut",
+                      delay: index * 0.2,
+                    }} // Staggered animation
                   >
                     {/* First Red Box */}
                     <div
@@ -299,7 +313,7 @@ const Overall = () => {
 
                     {/* Divider */}
                     <div className="bg-white w-[3px] h-[63px]"></div>
-                  </li>
+                  </motion.div>
                 ))}
               </ul>
             </div>

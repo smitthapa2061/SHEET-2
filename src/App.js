@@ -18,7 +18,7 @@ import Map from "./Components/Slotlist/MapInfo";
 function App() {
   return (
     <BrowserRouter>
-      <div className="w-[1920px] h-[1080px]">
+      <div className="w-[1920px] h-[1080px] ">
         <Comps />
       </div>
     </BrowserRouter>

@@ -188,7 +188,14 @@ const MatchData = () => {
                           style={{ backgroundColor: primaryColor }}
                         >
                           <div className="w-[140px] h-[140px] ">
-                            <img src={team.team_logo} alt="" className="" />
+                            <img
+                              src={
+                                team.team_logo ||
+                                "https://res.cloudinary.com/dqckienxj/image/upload/v1730785916/default_ryi6uf_edmapm.png"
+                              }
+                              alt=""
+                              className=""
+                            />
                           </div>
                           <div className="w-[2px] h-[110px] bg-white relative left-[140px] bottom-[130px]"></div>
                           <div className="relative text-[100px] text-[white]  bottom-[255px] left-[160px]">
@@ -242,9 +249,16 @@ const MatchData = () => {
             ) // Exclude the highest total_points
             .slice(0, 4) // Show from the second highest to the fifth highest
             .map((team, index) => (
-              <div
+              <motion.div
                 className="relative left-[33px] bottom-[395px] mb-[10px] text-white flex"
                 key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                  delay: index * 0.2,
+                }} // Staggered animation
               >
                 <div className="flex text-[60px] text-center ">
                   <div
@@ -293,7 +307,7 @@ const MatchData = () => {
                     {team.total_points}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           {/*#2-4 data ends*/}
 
@@ -313,9 +327,16 @@ const MatchData = () => {
           </div>
 
           {pageData.map((team, index) => (
-            <div
+            <motion.div
               className="relative left-[1000px] bottom-[1250px] mb-[10px] text-white flex"
-              key={index}
+              key={`${currentPage}-${index}`} // Ensure a unique key per page switch
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+                delay: index * 0.2,
+              }} // Staggered animation
             >
               <div className="flex text-[60px] text-center">
                 <div
@@ -365,7 +386,7 @@ const MatchData = () => {
                   {team.total_points}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </motion.div>

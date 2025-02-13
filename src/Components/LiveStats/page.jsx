@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Dead from "../LiveStats/assets/deaed_logo.png";
 
+import { motion } from "framer-motion";
+
 const apiKey = "AIzaSyBd_goawSN9ikX7mqdW0r4H4WrH3T7eBEw"; // Your Google Sheets API key
 const spreadsheetId = "1LeFzBRavciItt15hqSjrJn81O2eNpKa0a0-LQG3fwwQ";
 
@@ -98,82 +100,88 @@ const LiveStats = () => {
 
   return (
     <div>
-      <div className="relative left-[1559px] top-[20px]">
-        <div
-          className="bg-[#b31616] w-[360px] h-[36px] flex justify-around text-white text-[22px] items-center font-[poppins]"
-          style={{ backgroundColor: primaryColor }}
-        >
-          <div className="relative left-[30px]">TEAM</div>
-          <div className="relative left-[80px]">ALIVE</div>
-          <div className="relative left-[23px]">KILLS</div>
-        </div>
+      <motion.div
+        initial={{ opacity: 0, x: 1920 }} // Start off-screen (right side)
+        animate={{ opacity: 1, x: 0 }} // Fade in and move to its position
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <div className="relative left-[1559px] top-[20px]">
+          <div
+            className="bg-[#b31616] w-[360px] h-[36px] flex justify-around text-white text-[22px] items-center font-[poppins]"
+            style={{ backgroundColor: primaryColor }}
+          >
+            <div className="relative left-[30px]">TEAM</div>
+            <div className="relative left-[80px]">ALIVE</div>
+            <div className="relative left-[23px]">KILLS</div>
+          </div>
 
-        <div>
-          {sortedData.map((team, index) => (
-            <div
-              key={index}
-              className="bg-[#01010199] w-[360px] h-[50px] flex font-bebas-neue font-[300] border-solid border-[#c1c1c1] border-b-[1px]"
-            >
+          <div>
+            {sortedData.map((team, index) => (
               <div
-                className={`text-white text-[43px] flex text-center justify-center items-center w-[60px] mt-[-5px] ${
-                  team.Alive === 0 ? "opacity-50" : "opacity-100"
-                }`}
+                key={index}
+                className="bg-[#01010199] w-[360px] h-[50px] flex font-bebas-neue font-[300] border-solid border-[#c1c1c1] border-b-[1px]"
               >
-                {index + 1}
-              </div>
-
-              <div
-                className={`${
-                  team.Alive === 0 ? "bg-[#ffffff87]" : "bg-[#ffffff]"
-                } w-[170px] h-[50px] absolute left-[60px] flex justify-left text-black border-solid border-[#b51f1f] border-b-[1px]`}
-                style={{ borderColor: primaryColor }}
-              >
-                <div className="w-[50px] h-[50px] absolute z-10">
-                  <img
-                    src={
-                      team.team_logo ||
-                      "https://res.cloudinary.com/dqckienxj/image/upload/v1727161652/default_nuloh2.png"
-                    }
-                    alt=""
-                  />
-                </div>
-                <div className="bg-black w-[2px] h-[46px] absolute left-[50px] top-[3px]"></div>
                 <div
-                  className="text-[45px] l mt-[-6px] absolute left-[54px]"
+                  className={`text-white text-[43px] flex text-center justify-center items-center w-[60px] mt-[-5px] ${
+                    team.Alive === 0 ? "opacity-50" : "opacity-100"
+                  }`}
+                >
+                  {index + 1}
+                </div>
+
+                <div
+                  className={`${
+                    team.Alive === 0 ? "bg-[#ffffff87]" : "bg-[#ffffff]"
+                  } w-[170px] h-[50px] absolute left-[60px] flex justify-left text-black border-solid border-[#b51f1f] border-b-[1px]`}
+                  style={{ borderColor: primaryColor }}
+                >
+                  <div className="w-[50px] h-[50px] absolute z-10">
+                    <img
+                      src={
+                        team.team_logo ||
+                        "https://res.cloudinary.com/dqckienxj/image/upload/v1727161652/default_nuloh2.png"
+                      }
+                      alt=""
+                    />
+                  </div>
+                  <div className="bg-black w-[2px] h-[46px] absolute left-[50px] top-[3px]"></div>
+                  <div
+                    className="text-[45px] l mt-[-6px] absolute left-[54px]"
+                    style={{ opacity: team.Alive === 0 ? 0.5 : 1 }}
+                  >
+                    {team.team_name}
+                  </div>
+                </div>
+
+                <div className="absolute left-[240px] flex gap-[3px] mt-[4px]">
+                  {team.Alive === 0 ? (
+                    <div className="w-[50px] h-[50px] absolute top-[-5px] opacity-[70%]">
+                      <img src={Dead} alt="" />
+                    </div>
+                  ) : (
+                    Array.from({ length: Math.min(team.Alive, 4) }).map(
+                      (_, index) => (
+                        <div
+                          key={index}
+                          className="w-[10px] h-[40px] bg-red-800"
+                          style={{ backgroundColor: primaryColor }}
+                        ></div>
+                      )
+                    )
+                  )}
+                </div>
+
+                <div
+                  className="absolute left-[300px] text-white text-[45px] mt-[1px] flex items-center justify-center w-[50px] h-[50px]"
                   style={{ opacity: team.Alive === 0 ? 0.5 : 1 }}
                 >
-                  {team.team_name}
+                  {team.team_kills}
                 </div>
               </div>
-
-              <div className="absolute left-[240px] flex gap-[3px] mt-[4px]">
-                {team.Alive === 0 ? (
-                  <div className="w-[50px] h-[50px] absolute top-[-5px] opacity-[70%]">
-                    <img src={Dead} alt="" />
-                  </div>
-                ) : (
-                  Array.from({ length: Math.min(team.Alive, 4) }).map(
-                    (_, index) => (
-                      <div
-                        key={index}
-                        className="w-[10px] h-[40px] bg-red-800"
-                        style={{ backgroundColor: primaryColor }}
-                      ></div>
-                    )
-                  )
-                )}
-              </div>
-
-              <div
-                className="absolute left-[300px] text-white text-[45px] mt-[1px] flex items-center justify-center w-[50px] h-[50px]"
-                style={{ opacity: team.Alive === 0 ? 0.5 : 1 }}
-              >
-                {team.team_kills}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -120,9 +120,16 @@ const Fragger = () => {
         {/* Fragger data */}
         <div className="flex flex-wrap justify-center space-x-4">
           {data.map((row, index) => (
-            <div
-              key={index}
+            <motion.div
               className="flex mb-[20px] relative left-[35px] top-[270px]"
+              key={index}
+              initial={{ opacity: 0, y: 550 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+                delay: index * 0.2,
+              }} // Staggered animation
             >
               <div
                 className="bg-[#000000bb] border-solid border-red-800 w-[340px] h-[492px] mr-[20px] border-[2px]"
@@ -198,7 +205,7 @@ const Fragger = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

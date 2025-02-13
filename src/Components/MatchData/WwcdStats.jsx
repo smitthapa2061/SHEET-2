@@ -100,7 +100,10 @@ const WwcdTeamStats = () => {
           </div>
           <div className="w-[250px] h-[250px] ml-[20px] absolute top-[700px]">
             <img
-              src={winningTeam.team_logo}
+              src={
+                winningTeam.team_logo ||
+                "https://res.cloudinary.com/dqckienxj/image/upload/v1730785916/default_ryi6uf_edmapm.png"
+              }
               alt={winningTeam.team_name}
               className="w-full h-full"
             />
@@ -108,69 +111,74 @@ const WwcdTeamStats = () => {
           <div className="ml-[270px] absolute top-[690px] text-[200px]">
             {winningTeam.team_name}
           </div>
-
-          {/* Player Names */}
-          <div className="absolute left-[610px] top-[0px] flex gap-4">
-            {winningPlayers.map((player, index) => (
-              <div
-                key={index}
-                style={{ backgroundColor: primaryColor }}
-                className="w-[323px] h-[700px]  before text-white text-[30px] font-bold shadow-lg"
-              >
-                {/* Image with Clipping Mask */}
-                <div className="w-[500px] h-[500px] relative top-[200px] left-[4px]">
-                  <img
-                    src={
-                      player.player_photo ||
-                      "https://res.cloudinary.com/dqckienxj/image/upload/v1737809848/Layer_6_cnd9gl_ugaxek.png"
-                    }
-                    alt={player.player_name}
-                    className="w-[100%] h-[100%]"
-                    style={{
-                      clipPath: "polygon(0 0, 64% 0, 63.6% 100%, 0% 100%)",
-                    }}
-                  />
-                </div>
-                <div className="w-[324px] h-[500px] absolute bg-gradient-to-t from-black via-transparent to-[#ffffff00] top-[200px]"></div>
-                {/* Player Name */}
+          <motion.div
+            initial={{ opacity: 1, y: -100 }} // Start from below
+            animate={{ opacity: 7, y: 0 }} // Move to its original position
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            {/* Player Names */}
+            <div className="absolute left-[610px] top-[0px] flex gap-4">
+              {winningPlayers.map((player, index) => (
                 <div
-                  className="relative top-[200px] left-[0px] w-[323px] h-[80px] text-center font-teko font-[300] "
+                  key={index}
                   style={{ backgroundColor: primaryColor }}
+                  className="w-[323px] h-[700px]  before text-white text-[30px] font-bold shadow-lg"
                 >
-                  <div className="text-[80px]  top-[-18px] relative">
-                    {player.player_name}
+                  {/* Image with Clipping Mask */}
+                  <div className="w-[500px] h-[500px] relative top-[200px] left-[4px]">
+                    <img
+                      src={
+                        player.player_photo ||
+                        "https://res.cloudinary.com/dqckienxj/image/upload/v1737809848/Layer_6_cnd9gl_ugaxek.png"
+                      }
+                      alt={player.player_name}
+                      className="w-[100%] h-[100%]"
+                      style={{
+                        clipPath: "polygon(0 0, 64% 0, 63.6% 100%, 0% 100%)",
+                      }}
+                    />
                   </div>
-                </div>
+                  <div className="w-[324px] h-[500px] absolute bg-gradient-to-t from-black via-transparent to-[#ffffff00] top-[200px]"></div>
+                  {/* Player Name */}
+                  <div
+                    className="relative top-[200px] left-[0px] w-[323px] h-[80px] text-center font-teko font-[300] "
+                    style={{ backgroundColor: primaryColor }}
+                  >
+                    <div className="text-[80px]  top-[-18px] relative">
+                      {player.player_name}
+                    </div>
+                  </div>
 
-                {/* Kills Count */}
-                <div className="relative top-[0px] left-[20px] text-white">
-                  <div className="flex flex-col">
+                  {/* Kills Count */}
+                  <div className="relative top-[0px] left-[20px] text-white">
+                    <div className="flex flex-col">
+                      <div
+                        className="mt-[-100px] text-[90px] relative top-[-40px]"
+                        style={{ color: primaryColor }}
+                      >
+                        {player.player_kills}
+                      </div>
+                      <span className="font-teko font-[300] relative top-[-80px] left-[3px]">
+                        Kills
+                      </span>
+                    </div>
+                  </div>
+                  <div className="relative top-[0px] left-[20px] text-white flex flex-col">
                     <div
-                      className="mt-[-100px] text-[90px] relative top-[-40px]"
+                      className="mt-[-100px] text-[90px] relative top-[-10px]"
                       style={{ color: primaryColor }}
                     >
-                      {player.player_kills}
+                      {player.contribution}%
                     </div>
-                    <span className="font-teko font-[300] relative top-[-80px] left-[3px]">
-                      Kills
+                    <span className="font-teko font-[300] relative top-[-50px] left-[3px]">
+                      CONTRIBUTION
                     </span>
                   </div>
+                  <div className="w-[323px] h-[770px] bg-[#000000dc] before text-white text-[30px] font-bold shadow-lg mt-[-750px]"></div>
                 </div>
-                <div className="relative top-[0px] left-[20px] text-white flex flex-col">
-                  <div
-                    className="mt-[-100px] text-[90px] relative top-[-10px]"
-                    style={{ color: primaryColor }}
-                  >
-                    {player.contribution}%
-                  </div>
-                  <span className="font-teko font-[300] relative top-[-50px] left-[3px]">
-                    CONTRIBUTION
-                  </span>
-                </div>
-                <div className="w-[323px] h-[770px] bg-[#000000dc] before text-white text-[30px] font-bold shadow-lg mt-[-750px]"></div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </motion.div>
     </div>
