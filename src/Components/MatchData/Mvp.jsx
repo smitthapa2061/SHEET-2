@@ -155,7 +155,7 @@ const Mvp = () => {
                         {highestKillsPlayer?.contribution}%
                       </div>
                       <div className="text-[50px] bg-white text-black h-[60px] absolute w-[200px] top-[140px]">
-                        CONTRIBITION
+                        CONTRIBUTION
                       </div>
                     </div>
                   </div>
