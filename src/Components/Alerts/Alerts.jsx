@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+
+const apiKey = "AIzaSyBd_goawSN9ikX7mqdW0r4H4WrH3T7eBEw"; // Your Google Sheets API key
+const spreadsheetId = "1LeFzBRavciItt15hqSjrJn81O2eNpKa0a0-LQG3fwwQ";
 const Alerts = () => {
   const [matchAlerts, setMatchAlerts] = useState([]);
   const [error, setError] = useState(null);
@@ -12,9 +15,8 @@ const Alerts = () => {
   const displayedDeadTeams = useRef(new Set());
 
   const url =
-    "https://script.google.com/macros/s/AKfycby2YX6NTB3Jb85vWvdyV7k1dZLGtlVHc5eXUprlM81A4T_GCRN6IbPE9Ju8H_h-UeguaQ/exec";
-  const setupUrl =
-    "https://sheets.googleapis.com/v4/spreadsheets/1u1t50nxdhlZimY3vsOlM6452gBauTZZ0g2UdfRsj7T8/values/setup!A2:B10?key=AIzaSyCgDkaR7IVZDB6INAyjHNRcu3brZfoWpSA"; // Setup range
+    "https://script.google.com/macros/s/AKfycbwwGSnNqWr2FZpEs8l6EAkCjb9miZAJ-X8PyFMcS8kvE3kQ-h_XZk5wQT8-p07-tyF5hA/exec";
+  const setupUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/setup!A2:B10?key=${apiKey}`; // Setup range
 
   useEffect(() => {
     // Fetch Setup Data for primary color
@@ -87,7 +89,7 @@ const Alerts = () => {
     };
 
     fetchData();
-    const intervalId = setInterval(fetchData, 5000);
+    const intervalId = setInterval(fetchData, 6000);
     return () => clearInterval(intervalId);
   }, [url]);
 
@@ -117,7 +119,7 @@ const Alerts = () => {
                 <img
                   src={
                     latestDeadTeam.team_logo ||
-                    "https://res.cloudinary.com/dqckienxj/image/upload/v1730785916/default_ryi6uf_edmapm.png"
+                    "https://res.cloudinary.com/dqckienxj/image/upload/v1727161652/default_nuloh2.png"
                   }
                   alt="logo"
                   className="w-[180px] h-[160px] absolute "
