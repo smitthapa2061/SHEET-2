@@ -21,20 +21,22 @@ const MatchData = () => {
   useEffect(() => {
     // Fetch match data
     axios
-      .get(urlMatchData) // Using axios for the GET request
+      .get(urlMatchData)
       .then((response) => {
         const data = response.data;
 
         if (data.error) {
           setError(data.error);
         } else {
-          // Remove duplicates based on team_name
-          const uniqueData = data.match_info.reduce((acc, team) => {
-            if (!acc.some((item) => item.team_name === team.team_name)) {
-              acc.push(team);
-            }
-            return acc;
-          }, []);
+          // Remove duplicates based on team_name and filter out rows with player_rank
+          const uniqueData = data.match_info
+            .filter((team) => !team.player_rank) // Exclude rows where player_rank is truthy
+            .reduce((acc, team) => {
+              if (!acc.some((item) => item.team_name === team.team_name)) {
+                acc.push(team);
+              }
+              return acc;
+            }, []);
 
           // Sort the data by total_points in descending order
           uniqueData.sort((a, b) => b.total_points - a.total_points);
