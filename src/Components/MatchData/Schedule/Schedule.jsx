@@ -133,7 +133,10 @@ const Schedule = () => {
                           }}
                         >
                           <img
-                            src={match.WWCD_TEAM_LOGO}
+                            src={
+                              match.WWCD_TEAM_LOGO ||
+                              "https://res.cloudinary.com/dqckienxj/image/upload/v1730785916/default_ryi6uf_edmapm.png"
+                            }
                             alt=""
                             className="mb-[-315px]"
                           />
