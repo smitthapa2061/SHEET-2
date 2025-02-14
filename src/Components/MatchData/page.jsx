@@ -158,7 +158,10 @@ const MatchData = () => {
                           <div>
                             <div className="w-[400px] h-[250px] relative top-[46px] right-[250px] z-10">
                               <img
-                                src="https://res.cloudinary.com/dqckienxj/image/upload/v1735762279/defult_chach_apsjhc_dwnd7n.png"
+                                src={
+                                  team.player_photo ||
+                                  "https://res.cloudinary.com/dqckienxj/image/upload/v1735762279/defult_chach_apsjhc_dwnd7n.png"
+                                }
                                 alt=""
                                 className=""
                               />
@@ -167,7 +170,10 @@ const MatchData = () => {
                           <div>
                             <div className="w-[400px] h-[250px] relative top-[46px] right-[440px] z-0">
                               <img
-                                src="https://res.cloudinary.com/dqckienxj/image/upload/v1735762279/defult_chach_apsjhc_dwnd7n.png"
+                                src={
+                                  team.player_photo ||
+                                  "https://res.cloudinary.com/dqckienxj/image/upload/v1735762279/defult_chach_apsjhc_dwnd7n.png"
+                                }
                                 alt=""
                                 className=""
                               />
@@ -176,7 +182,10 @@ const MatchData = () => {
                           <div>
                             <div className="w-[400px] h-[250px] relative top-[46px] right-[640px] z-10">
                               <img
-                                src="https://res.cloudinary.com/dqckienxj/image/upload/v1735762279/defult_chach_apsjhc_dwnd7n.png"
+                                src={
+                                  team.player_photo ||
+                                  "https://res.cloudinary.com/dqckienxj/image/upload/v1735762279/defult_chach_apsjhc_dwnd7n.png"
+                                }
                                 alt=""
                                 className=""
                               />

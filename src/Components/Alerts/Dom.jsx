@@ -13,9 +13,9 @@ const Dom = () => {
   const timeoutId = useRef(null); // Track the timeout for clearing the milestone
 
   const url =
-    "https://script.google.com/macros/s/AKfycby2YX6NTB3Jb85vWvdyV7k1dZLGtlVHc5eXUprlM81A4T_GCRN6IbPE9Ju8H_h-UeguaQ/exec";
+    "https://script.google.com/macros/s/AKfycbwwGSnNqWr2FZpEs8l6EAkCjb9miZAJ-X8PyFMcS8kvE3kQ-h_XZk5wQT8-p07-tyF5hA/exec";
   const setupUrl =
-    "https://sheets.googleapis.com/v4/spreadsheets/1u1t50nxdhlZimY3vsOlM6452gBauTZZ0g2UdfRsj7T8/values/setup!A2:B10?key=AIzaSyCgDkaR7IVZDB6INAyjHNRcu3brZfoWpSA"; // Setup range
+    "https://sheets.googleapis.com/v4/spreadsheets/1LeFzBRavciItt15hqSjrJn81O2eNpKa0a0-LQG3fwwQ/values/setup!A2:B10?key=AIzaSyBd_goawSN9ikX7mqdW0r4H4WrH3T7eBEw"; // Setup range
 
   useEffect(() => {
     // Fetch Setup Data for primary color and font style
