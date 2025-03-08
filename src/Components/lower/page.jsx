@@ -93,7 +93,7 @@ const Lower = () => {
           <div className="flex items-center justify-start mt-2 ">
             {/**Lower rectangle */}
             <div className="bg-white  w-[17rem] h-[4rem] transform  skew-x-[135deg]  shadow-lg flex items-center justify-center">
-              <div className="block transform -skew-x-[135deg] text-black font-[500] text-5xl font-bebas-neue mx-2 ">
+              <div className="block transform -skew-x-[135deg] text-black font-[500] text-4xl font-bebas-neue mx-2 ">
                 {data.ROUND}
               </div>
             </div>
