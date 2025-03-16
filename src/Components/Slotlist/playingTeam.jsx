@@ -78,27 +78,29 @@ const PlayingTeams = () => {
                   />
                 </div>
               </div>
-
-              <div className="bg-[#000000b4] w-[69px] h-[65px] flex justify-center absolute top-[583px] left-[730px] z-10">
-                <img
-                  src={row.ColumnC}
-                  alt=""
-                  className="w-[64px] h-[64px] relative top-[0px] left-[]"
-                />
+              <div className="relative left-[-85px]">
+                <div className="bg-[#000000b4] w-[69px] h-[65px] flex justify-center absolute top-[583px] left-[730px] z-10">
+                  <img
+                    src={row.ColumnC}
+                    alt=""
+                    className="w-[64px] h-[64px] relative top-[0px] left-[]"
+                  />
+                </div>
+                <div className="relative top-[-3x]">
+                  <div className="flex justify-left items-center font-[300] text-white text-[32px] font-bebas-neue absolute top-[576px] left-[810px] z-10">
+                    {row.ColumnB}
+                  </div>
+                  <div
+                    style={{ backgroundColor: row.ColumnE }}
+                    className="w-[100px] h-[32px] flex justify-left items-center font-[300] text-white text-[35px] font-bebas-neue absolute top-[583px] left-[790px] skew-x-12 z-0"
+                  ></div>
+                </div>
+                <div
+                  style={{ backgroundColor: row.ColumnE }}
+                  className="w-[68px] h-[65px] flex justify-center absolute top-[583px] left-[730px]"
+                  // Apply dynamic background color
+                ></div>
               </div>
-
-              <div className="flex justify-left items-center font-[300] text-white text-[32px] font-bebas-neue absolute top-[576px] left-[810px] z-10">
-                {row.ColumnB}
-              </div>
-              <div
-                style={{ backgroundColor: row.ColumnE }}
-                className="w-[100px] h-[31px] flex justify-left items-center font-[300] text-white text-[35px] font-bebas-neue absolute top-[583px] left-[790px] skew-x-12 z-0"
-              ></div>
-              <div
-                style={{ backgroundColor: row.ColumnE }}
-                className="w-[68px] h-[65px] flex justify-center absolute top-[583px] left-[730px]"
-                // Apply dynamic background color
-              ></div>
             </div>
           ))}
       </div>
